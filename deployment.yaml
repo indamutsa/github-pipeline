@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: arsenelearning
-          image: 274576527624.dkr.ecr.us-east-1.amazonaws.com/arsenelearning
+          image: indamutsa/arsenelearning
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
