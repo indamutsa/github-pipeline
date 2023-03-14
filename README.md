@@ -12,7 +12,12 @@ The above container has been already initialized with essentaials kubernetes uti
 
 2. Run this command to initialize the cluster using eksctl
 
-`eksctl create cluster --name arsenelearning --region us-east-2 --nodegroup-name linux-nodes --node-type t2.micro --nodes 2`
+`eksctl create cluster --name arsenelearning --region us-east-1 --nodegroup-name linux-nodes --node-type t2.micro --nodes 2`
+
+ --- Youcan free the resources: \
+ ```
+ eksctl delete cluster --name arsenelearning --region us-east-1
+ ```
 
 3. Create a repository, not in the container but in the host machine. Git is not isntalled on the container since there is no need. Follow the commands below:
 
