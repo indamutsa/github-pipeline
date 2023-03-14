@@ -1,6 +1,5 @@
 # Deploying EKS cluster using GITHUB Actions
 
-
 1. Let us get a working container: \
 ```
 docker rm -f cloud-playgrounqd
