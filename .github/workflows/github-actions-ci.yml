@@ -46,8 +46,8 @@ jobs:
 
     - name: Deploy to EKS # Deploy the application to EKS
       run: |
-        kubectl apply -f deployment.yaml # Deploy the Kubernetes deployment
-        kubectl apply -f service.yaml # Deploy the Kubernetes service
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
 
 
 # -----------------------------------------------
