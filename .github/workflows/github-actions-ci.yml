@@ -28,30 +28,18 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # Set the AWS secret access key from the secrets
         aws-region: us-east-2 # Set the AWS region to use
 
-    # - name: Login to Amazon ECR # Login to Amazon ECR to push the Docker image
-    #   id: login-ecr # Set an ID for the action
-    #   uses: aws-actions/amazon-ecr-login@v1 # Use version 1 of the AWS-actions/amazon-ecr-login action
+    - name: Login to Amazon ECR # Login to Amazon ECR to push the Docker image
+      id: login-ecr # Set an ID for the action
+      uses: aws-actions/amazon-ecr-login@v1 # Use version 1 of the AWS-actions/amazon-ecr-login action
 
-    # - name: Build, tag, and push docker image to Amazon ECR # Build, tag and push the Docker image to Amazon ECR
-    #   env:
-    #     REGISTRY: ${{ steps.login-ecr.outputs.registry }} # Get the ECR registry URL from the output of the previous step
-    #     REPOSITORY: arsenelearning # Set the name of the ECR repository
-    #     IMAGE_TAG: 1.1 # Set the tag for the Docker image
-    #   run: |
-    #     docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . # Build the Docker image
-    #     docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG # Push the Docker image to ECR
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKEr_USERNAME }}
-        password: ${{ secrets.DOCKER_PASS }}
-    - name: Build and push
-      uses: docker/bake-action@v2
-      with:
-        push: true
+    - name: Build, tag, and push docker image to Amazon ECR # Build, tag and push the Docker image to Amazon ECR
+      env:
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }} # Get the ECR registry URL from the output of the previous step
+        REPOSITORY: arsenelearning # Set the name of the ECR repository
+        IMAGE_TAG: 1.1 # Set the tag for the Docker image
+      run: |
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . # Build the Docker image
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG # Push the Docker image to ECR
 
     - name: Update kube config # Update the kubeconfig file with the EKS cluster details
       run: aws eks update-kubeconfig --name arsenelearning # Use the AWS CLI to update the kubeconfig file
