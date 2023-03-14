@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arsene_learning
+  labels:
+    app: arsene_learning
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arsene_learning
+  template:
+    metadata:
+      labels:
+        app: arsene_learning
+    spec:
+      containers:
+        - name: arsene_learning
+          image: 274127640471.dkr.ecr.us-east-2.amazonaws.com/arsene_learning:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
