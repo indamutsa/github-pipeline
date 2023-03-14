@@ -38,8 +38,8 @@ jobs:
         REPOSITORY: arsenelearning # Set the name of the ECR repository
         IMAGE_TAG: 1.1 # Set the tag for the Docker image
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . # Build the Docker image
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG # Push the Docker image to ECR
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . 
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG 
 
     - name: Update kube config # Update the kubeconfig file with the EKS cluster details
       run: aws eks update-kubeconfig --name arsenelearning # Use the AWS CLI to update the kubeconfig file
