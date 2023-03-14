@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: arsene_learning
+  name: arsenelearning
 spec:
   selector:
-    app: arsene_learning
+    app: arsenelearning
   ports:
     - protocol: TCP
       port: 80

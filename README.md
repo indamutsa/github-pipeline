@@ -12,7 +12,7 @@ The above container has been already initialized with essentaials kubernetes uti
 
 2. Run this command to initialize the cluster using eksctl
 
-`eksctl create cluster --name arsene_learning --region us-east-2 --nodegroup-name linux-nodes --node-type t2.micro --nodes 2`
+`eksctl create cluster --name arsenelearning --region us-east-2 --nodegroup-name linux-nodes --node-type t2.micro --nodes 2`
 
 3. Create a repository, not in the container but in the host machine. Git is not isntalled on the container since there is no need. Follow the commands below:
 
@@ -47,7 +47,9 @@ git remove -v
         Go to settings of repo
         click on secrets and variables
 ```
+7. Create ECR, elastic container registry. Once created copy it in the deployment yaml to make sure kubernetes knows where to pull image from.
+
 6. Test application by getting the dns name and going to a web browser
 
 
-Clean up: Run: eksctl delete cluster --name arsene_learning
+Clean up: Run: eksctl delete cluster --name arsenelearning
